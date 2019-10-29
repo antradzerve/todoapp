@@ -15,21 +15,18 @@
     <div class="container">
         <div class="d-flex flex-column text-center">
             <h1 class="mt-3">Todo List</h1>
-            
             <form class="d-flex flex-row my-3">
-                
                 <input class="form-control" type="text" placeholder="Add vital tasks">
                 <button type="button" class="btn btn-info">Submit</button>
-                
             </form>
 
         </div>
-            <ul class="list-group">
-                <li class="list-group-item">Watch HP1-HP7</li>
-                <li class="list-group-item">Read WoT</li>
-                <li class="list-group-item">Learn to code</li>
-            </ul>
-        </div>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">Watch HP1-HP7 <div><button type="button" class="btn btn-danger">Done</button><button type="button" class="btn btn-warning">Delete</button></div></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">Read WoT <div><button type="button" class="btn btn-danger">Done</button><button type="button" class="btn btn-warning">Delete</button></div></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">Learn to code <div><button type="button" class="btn btn-danger">Done</button><button type="button" class="btn btn-warning">Delete</button></div></li>
+        </ul>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
