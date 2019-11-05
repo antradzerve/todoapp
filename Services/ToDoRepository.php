@@ -2,6 +2,7 @@
 
 namespace Repository;
 
+use LogicException;
 use \PDO;
 
 class ToDoRepository{
@@ -39,11 +40,37 @@ class ToDoRepository{
             "SELECT * FROM todoitems"
         );
         $stmt->execute();
-        $stmt->setFetchMode(PFO::FETCH_CLASS, 'ToDoItem');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'ToDoItem');
         return $stmt->fetchAll();
     }
 
-    
+    public function save($toDoItem){
+        if (isset($toDoItem->id)){
+            return $this->update($toDoItem);
+        }
+
+        $stmt = $this->connection->prepare(
+            'INSERT INTO todoitems (id, task) VALUES (:id, :task)'
+        );
+        $stmt->bindParam(':id', $toDoItem->id);
+        $stmt->bindParam(':task', $toDoItem->task);
+        return $stmt->execute();
+    }
+
+    public function update($toDoItem){
+        if (isset($toDoItem->id)){
+            throw new LogicException(
+                'Sumtin went wong'
+            );
+        }
+
+        $stmt = $this->connection->prepare(
+           'UPDATE todoitems SET task = :task WHERE id = :id'
+        );
+        $stmt->bindParam(':id', $toDoItem->id);
+        $stmt->bindParam(':task', $toDoItem->task);
+        return $stmt->execute();
+    }
 
     }
 
