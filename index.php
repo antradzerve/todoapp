@@ -12,6 +12,18 @@
 </head>
 
 <body>
+
+    <!-- <?php
+
+use Repository\ToDoRepository;
+
+include 'Services/ToDoRepository.php';
+    $rev = new ToDoRepository();
+    $vari = $rev->find(3);
+    var_dump($vari);
+    
+    ?> -->
+
     <div class="container">
         <div class="d-flex flex-column text-center">
             <h1 class="mt-3">Todo List</h1>
