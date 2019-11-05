@@ -2,6 +2,8 @@
 
 namespace Repository;
 
+include __DIR__ . '/../Model/toDoModel.php';
+
 use LogicException;
 use \PDO;
 

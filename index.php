@@ -13,17 +13,6 @@
 
 <body>
 
-    <!-- <?php
-
-use Repository\ToDoRepository;
-
-include 'Services/ToDoRepository.php';
-    $rev = new ToDoRepository();
-    $vari = $rev->find(3);
-    var_dump($vari);
-    
-    ?> -->
-
     <div class="container">
         <div class="d-flex flex-column text-center">
             <h1 class="mt-3">Todo List</h1>
@@ -34,9 +23,16 @@ include 'Services/ToDoRepository.php';
 
         </div>
         <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">Watch HP1-HP7 <div><button type="button" class="btn btn-danger">Done</button><button type="button" class="btn btn-warning">Delete</button></div></li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">Read WoT <div><button type="button" class="btn btn-danger">Done</button><button type="button" class="btn btn-warning">Delete</button></div></li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">Learn to code <div><button type="button" class="btn btn-danger">Done</button><button type="button" class="btn btn-warning">Delete</button></div></li>
+            <?php
+            use Repository\ToDoRepository;
+            include('Services/ToDoRepository.php');
+            $rep = new ToDoRepository();
+            $taskList = $rep->findAll();
+            foreach ($taskList as $taskItem) {
+                include('toDoItem.php');
+            }
+            
+            ?>
         </ul>
     </div>
     </div>
