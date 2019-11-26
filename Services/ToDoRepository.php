@@ -2,7 +2,7 @@
 
 namespace Repository;
 
-include __DIR__ . '/../Model/toDoModel.php';
+include_once __DIR__ . '/../Model/toDoModel.php';
 
 use LogicException;
 use \PDO;
@@ -56,11 +56,14 @@ class ToDoRepository{
         );
         $stmt->bindParam(':id', $toDoItem->id);
         $stmt->bindParam(':task', $toDoItem->task);
-        return $stmt->execute();
+        $stmt->execute();
+        $id = $this->connection->lastInsertId();
+        $toDoItem->id = $id;
+        return true;
     }
 
     public function update($toDoItem){
-        if (isset($toDoItem->id)){
+        if (!isset($toDoItem->id)){
             throw new LogicException(
                 'Sumtin went wong'
             );
@@ -71,6 +74,21 @@ class ToDoRepository{
         );
         $stmt->bindParam(':id', $toDoItem->id);
         $stmt->bindParam(':task', $toDoItem->task);
+        return $stmt->execute();
+    }
+
+    public function delete($toDoItem){
+        if (!isset($toDoItem->id)){
+            throw new LogicException(
+                'Sumtin went wong'
+            );
+        }
+
+        $stmt = $this->connection->prepare(
+           'DELETE FROM todoitems WHERE id = :id'
+        );
+        $stmt->bindParam(':id', $toDoItem->id);
+
         return $stmt->execute();
     }
 

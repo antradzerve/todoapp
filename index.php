@@ -1,3 +1,8 @@
+<?php
+include ("Controller/toDoController.php");
+$controller = new TaskController();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,10 +29,7 @@
         </div>
         <ul class="list-group">
             <?php
-            use Repository\ToDoRepository;
-            include('Services/ToDoRepository.php');
-            $rep = new ToDoRepository();
-            $taskList = $rep->findAll();
+            $taskList = $controller->getAll();
             foreach ($taskList as $taskItem) {
                 include('toDoItem.php');
             }
@@ -36,6 +38,17 @@
         </ul>
     </div>
     </div>
+
+    <!-- <div id="sum_test">
+        <form action="Controller/sum.php" method="POST">
+            <input type="hidden" name="_method" value="sum">
+            <input type="number" name="a">
+            <input type="number" name="b">
+            <button></button>
+        </form>
+    </div> -->
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
