@@ -21,9 +21,10 @@ $controller = new TaskController();
     <div class="container">
         <div class="d-flex flex-column text-center">
             <h1 class="mt-3">Todo List</h1>
-            <form class="d-flex flex-row my-3">
-                <input class="form-control" type="text" placeholder="Add vital tasks">
-                <button type="button" class="btn btn-info">Submit</button>
+            <form action="Controller/toDoController.php" method="post" class="d-flex flex-row my-3" >
+                <input type="hidden" name="_method" value="save">
+                <input class="form-control" type="text" name='task' placeholder="Add vital tasks">
+                <button type="submit" class="btn btn-info">Submit</button>
             </form>
 
         </div>
