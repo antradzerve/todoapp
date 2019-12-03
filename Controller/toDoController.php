@@ -33,12 +33,12 @@ class TaskController{
         $toDoItem = $rep->find($id);
         $toDoItem->task = $task;
         $rep->update($toDoItem);
-        header('Location: /');
+        // header('Location: /');
     }
 }
 
-echo '???';
-var_dump($_REQUEST);
+// echo '???';
+// var_dump($_REQUEST);
 
 $controller = new TaskController();
 
@@ -58,6 +58,7 @@ if (isset($_REQUEST['_method'])) {
             }
             break;
         case 'update':
+            var_dump($_REQUEST);
             if(isset($_REQUEST['task']) && isset($_REQUEST['id'])){
                 $task = $_REQUEST['task'];
                 $id = $_REQUEST['id'];
