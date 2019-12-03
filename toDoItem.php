@@ -7,7 +7,6 @@
         <input type="hidden" name="test" id="test<?php echo $taskItem->id ?>" >
         <button type="submit" class="btn btn-danger mx-1 edit_button" id="button<?php echo $taskItem->id ?>">Save edit</button>
     </form>    
-    <?php echo $taskItem->id ?>
     <div>
         <button type="button" onclick="enableEditing(<?php echo $taskItem->id ?>,'button<?php echo $taskItem->id ?>')" class="btn btn-success mx-1">Edit</button>
         <!-- <form>
